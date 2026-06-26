@@ -75,13 +75,12 @@ export function AvatarFrame({
             no-signal
           </span>
         </div>
-        {/* portrait image sits on top when it loads */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={src}
-          alt="Portrait of Romain Bodinier"
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{ clipPath: hexClip }}
+        {/* portrait sits on top (background-image → no broken icon if absent) */}
+        <div
+          role="img"
+          aria-label="Portrait of Romain Bodinier"
+          className="absolute inset-0 bg-cover bg-[center_top]"
+          style={{ backgroundImage: `url(${src})` }}
         />
         {/* scan sweep */}
         <span

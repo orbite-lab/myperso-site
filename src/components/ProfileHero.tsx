@@ -3,6 +3,7 @@ import { DOMAIN_ORDER, DOMAINS } from "@/content/entries/types";
 import { byDomain } from "@/content/entries";
 import { SocialLinks, DownloadCV } from "./SocialLinks";
 import { AvatarFrame } from "./AvatarFrame";
+import { BioPhoto } from "./BioPhoto";
 
 /** Home identity block — styled like a game character-select / bio dossier. */
 export function ProfileHero() {
@@ -11,6 +12,18 @@ export function ProfileHero() {
       className="hud-frame relative overflow-hidden rounded-[var(--radius-organic)] glass p-6 sm:p-9"
       style={{ ["--accent-rgb" as string]: "20,184,166" } as React.CSSProperties}
     >
+      {/* ambient B&W hero photo, duotone, faded right side */}
+      <BioPhoto
+        src="/hero.jpg"
+        accent={DOMAINS.science.accent}
+        position="center 20%"
+        className="absolute inset-0 opacity-[0.28]"
+        style={{
+          maskImage:
+            "linear-gradient(to left, black, transparent 72%)",
+        }}
+      />
+
       {/* ambient accent blooms */}
       <span
         className="absolute -left-16 -top-20 h-56 w-56 rounded-full opacity-30 blur-3xl"
