@@ -65,10 +65,10 @@ export function EntryCard({ entry }: { entry: Entry }) {
           {entry.summary}
         </p>
 
-        {/* domain "XP" bar */}
-        <div className="mt-4 h-[3px] w-full overflow-hidden rounded-full bg-white/5">
+        {/* hover underline sweep (decorative) */}
+        <div className="mt-4 h-px w-full overflow-hidden bg-white/5">
           <span
-            className="block h-full w-2/3 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
+            className="block h-full w-full origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
             style={{
               background: `linear-gradient(90deg, ${meta.accent}, transparent)`,
             }}

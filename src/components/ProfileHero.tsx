@@ -67,37 +67,38 @@ export function ProfileHero() {
             ))}
           </div>
 
-          {/* Class stat bars — one per lens */}
-          <div className="mt-6 space-y-2.5">
+          {/* Lenses — what each domain is, + how many entries live in it */}
+          <div className="mt-6 grid gap-2.5 sm:grid-cols-3">
             {DOMAIN_ORDER.map((d, i) => {
               const meta = DOMAINS[d];
               const focus = PROFILE.focus[i];
               const count = byDomain(d).length;
-              const pct = 55 + i * 14; // flavorful "stat" levels
               return (
-                <div key={d} className="flex items-center gap-3">
-                  <span
-                    className="mono w-16 shrink-0 text-[11px] uppercase tracking-wider"
-                    style={{ color: meta.accent }}
-                  >
-                    {meta.label}
-                  </span>
-                  <div className="h-2 flex-1 overflow-hidden rounded-full bg-white/5">
+                <div
+                  key={d}
+                  className="rounded-xl border border-white/5 bg-white/[0.02] p-3.5"
+                >
+                  <div className="flex items-center justify-between">
                     <span
-                      className="block h-full rounded-full"
-                      style={{
-                        width: `${pct}%`,
-                        background: `linear-gradient(90deg, ${meta.accent}, ${meta.accent}40)`,
-                        boxShadow: `0 0 12px ${meta.accent}80`,
-                      }}
-                    />
+                      className="mono flex items-center gap-1.5 text-[11px] uppercase tracking-wider"
+                      style={{ color: meta.accent }}
+                    >
+                      <span
+                        className="h-1.5 w-1.5 rounded-full"
+                        style={{
+                          background: meta.accent,
+                          boxShadow: `0 0 8px ${meta.accent}`,
+                        }}
+                      />
+                      {meta.label}
+                    </span>
+                    <span className="mono text-[11px] text-ink-faint">
+                      {count} entr{count === 1 ? "y" : "ies"}
+                    </span>
                   </div>
-                  <span className="mono hidden w-44 shrink-0 truncate text-[11px] text-ink-faint sm:block">
-                    {focus.detail.split(" — ")[0]}
-                  </span>
-                  <span className="mono w-8 shrink-0 text-right text-[11px] text-ink-faint">
-                    {String(count).padStart(2, "0")}
-                  </span>
+                  <p className="mt-1.5 text-sm leading-snug text-ink-dim">
+                    {focus.detail}
+                  </p>
                 </div>
               );
             })}
