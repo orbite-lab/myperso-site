@@ -14,7 +14,7 @@ export function ProfileHero() {
     >
       {/* ambient B&W hero photo, duotone, faded right side */}
       <BioPhoto
-        src="/hero.png"
+        src="/hero.jpg"
         accent={DOMAINS.science.accent}
         position="center 20%"
         className="absolute inset-0 opacity-[0.4]"

@@ -6,7 +6,7 @@ import { BioPhoto } from "./BioPhoto";
 /** Optional photo backdrop per lens (degrades to gradient if file absent). */
 const LENS_PHOTO: Partial<Record<Domain, { src: string; position?: string }>> = {
   science: { src: "/igem.jpg", position: "center 30%" },
-  invest: { src: "/hero.png", position: "center 20%" },
+  invest: { src: "/hero.jpg", position: "center 20%" },
 };
 
 /** Full lens page body for a single domain. */
