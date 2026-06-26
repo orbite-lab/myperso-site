@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { allSlugs, getEntry } from "@/content/entries";
 import { DOMAINS } from "@/content/entries/types";
 import { DomainBadge } from "@/components/DomainBadge";
+import { EntryCover } from "@/components/EntryCover";
 import { formatDate, stampDate } from "@/lib/format";
 
 export function generateStaticParams() {
@@ -45,12 +46,19 @@ export default async function WorkDetailPage({
       </Link>
 
       {/* Header */}
-      <header className="relative overflow-hidden rounded-[var(--radius-organic)] glass p-8">
-        <span
-          className="absolute -right-20 -top-20 h-64 w-64 rounded-full opacity-30 blur-3xl"
-          style={{ background: meta.accent }}
-          aria-hidden
-        />
+      <header className="hud-frame relative overflow-hidden rounded-[var(--radius-organic)] glass">
+        {/* cover banner */}
+        <div className="relative">
+          {entry.image ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={entry.image} alt="" className="h-44 w-full object-cover sm:h-56" />
+          ) : (
+            <EntryCover slug={entry.slug} domain={entry.domain} height={210} />
+          )}
+          <span className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0e1220] to-transparent" />
+        </div>
+
+        <div className="relative p-8 pt-4">
         <div className="flex flex-wrap items-center gap-3">
           <DomainBadge domain={entry.domain} type={entry.type} />
           <time
@@ -75,6 +83,7 @@ export default async function WorkDetailPage({
         <p className="mt-3 max-w-2xl text-lg leading-relaxed text-ink-dim">
           {entry.summary}
         </p>
+        </div>
       </header>
 
       {/* Body */}

@@ -46,6 +46,8 @@ export interface Entry {
   tags?: string[];
   /** Outbound links (repo, demo, paper, video, ...). */
   links?: EntryLink[];
+  /** Optional cover image path (in /public). Falls back to generative art. */
+  image?: string;
   /** Short status badge, e.g. "shipped", "in progress", "v0.3". */
   state?: string;
   status?: EntryStatus;

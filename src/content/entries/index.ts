@@ -4,31 +4,46 @@ import type { Domain, Entry } from "./types";
 import myceliumArena from "./game/mycelium-arena";
 import enzymeDevlog07 from "./game/enzyme-devlog-07";
 import sporeJamRelease from "./game/spore-jam-release";
+import stateOfPlayJune2026 from "./game/state-of-play-june-2026";
+import gamesMemoryCrunch from "./game/games-memory-crunch-2026";
 
 // --- Invest ---
 import synbioThesis from "./invest/synthetic-biology-thesis";
 import computeArmsRace from "./invest/compute-arms-race-essay";
 import q1Postmortem from "./invest/q1-postmortem";
+import revMedDaraxonrasib from "./invest/revolution-medicines-daraxonrasib";
+import biotechMaWave from "./invest/biotech-ma-wave-2026";
 
 // --- Science ---
 import proteinFolding from "./science/protein-folding-experiment";
 import cellularAutomata from "./science/cellular-automata-essay";
 import biosensorVideo from "./science/biosensor-video";
+import recyclableFibers from "./science/recyclable-protein-fibers";
+import deNovoBinders from "./science/de-novo-binder-design";
 
 /**
  * The full corpus. Adding an entry = create the TS file and register it here.
  * Kept as a flat array; helpers below derive every view the UI needs.
  */
 export const ENTRIES: Entry[] = [
+  // Game
   myceliumArena,
   enzymeDevlog07,
   sporeJamRelease,
+  stateOfPlayJune2026,
+  gamesMemoryCrunch,
+  // Invest
   synbioThesis,
   computeArmsRace,
   q1Postmortem,
+  revMedDaraxonrasib,
+  biotechMaWave,
+  // Science
   proteinFolding,
   cellularAutomata,
   biosensorVideo,
+  recyclableFibers,
+  deNovoBinders,
 ];
 
 /** Newest first. */

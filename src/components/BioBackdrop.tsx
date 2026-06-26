@@ -1,9 +1,22 @@
-/** Ambient, non-interactive backdrop: gradient membrane, grid, drifting cells. */
+import { DnaHelix } from "./DnaHelix";
+
+/** Ambient, non-interactive backdrop: gradient membrane, hex grid, drifting
+ *  cells, and a faint floating DNA strand. */
 export function BioBackdrop() {
   return (
     <>
       <div className="bio-backdrop" aria-hidden />
-      <div className="bio-grid" aria-hidden />
+      <div className="hex-field" aria-hidden />
+
+      {/* faint side helix, desktop only */}
+      <div
+        className="animate-float fixed right-[3%] top-[14%] hidden h-[340px] w-[90px] opacity-[0.13] lg:block"
+        aria-hidden
+        style={{ zIndex: -1 }}
+      >
+        <DnaHelix rungs={18} />
+      </div>
+
       <div
         className="cell"
         aria-hidden
