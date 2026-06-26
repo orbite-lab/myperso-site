@@ -14,10 +14,10 @@ export function ProfileHero() {
     >
       {/* ambient B&W hero photo, duotone, faded right side */}
       <BioPhoto
-        src="/hero.jpg"
+        src="/hero.png"
         accent={DOMAINS.science.accent}
         position="center 20%"
-        className="absolute inset-0 opacity-[0.28]"
+        className="absolute inset-0 opacity-[0.4]"
         style={{
           maskImage:
             "linear-gradient(to left, black, transparent 72%)",
