@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/*
+  myperso-site design system
+  Theme: futuristic bio-luminescence × game HUD.
+  Dark void background, neon domain accents, organic membrane gradients,
+  scanline + grid overlays, monospace data labels.
+*/
+
+@theme {
+  --color-void: #05060a;
+  --color-void-2: #0a0d16;
+  --color-panel: #0e1220;
+  --color-membrane: #141a2e;
+  --color-ink: #e6ecff;
+  --color-ink-dim: #8b93b5;
+  --color-ink-faint: #565d7a;
+
+  --color-game: #a855f7;
+  --color-invest: #14b8a6;
+  --color-science: #3b82f6;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius-organic: 1.25rem;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ---- Ambient backdrop: living membrane + grid + scanlines ---- */
+.bio-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 80% 50% at 15% -10%, rgba(168, 85, 247, 0.18), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 10%, rgba(20, 184, 166, 0.14), transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% 110%, rgba(59, 130, 246, 0.16), transparent 60%),
+    var(--color-void);
+}
+
+.bio-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(120, 140, 200, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 140, 200, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 30%, transparent 80%);
+  pointer-events: none;
+}
+
+.bio-scanlines::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.015) 0px,
+    rgba(255, 255, 255, 0.015) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  mix-blend-mode: overlay;
+}
+
+/* ---- Animated drifting cells ---- */
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -30px) scale(1.15); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+@keyframes sweep {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+.cell {
+  position: fixed;
+  border-radius: 9999px;
+  filter: blur(40px);
+  z-index: -1;
+  animation: drift 18s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Glassy panel used across cards/nav */
+.glass {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.01)
+  );
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "ss01", "cv01";
+}
+
+/* Domain accent helper — set --accent + --accent-rgb on an element */
+.accent-glow {
+  box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.35),
+    0 8px 40px -12px rgba(var(--accent-rgb), 0.45);
+}
+
+/* Card hover scan line */
+.scan-line {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.group:hover .scan-line {
+  opacity: 1;
+}
+.scan-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--accent-rgb), 0.12),
+    transparent
+  );
+  animation: sweep 1.6s linear infinite;
+}
+
+::selection {
+  background: rgba(168, 85, 247, 0.35);
+  color: #fff;
+}
+
+/* Thin custom scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-void); }
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 140, 200, 0.2);
+  border-radius: 9999px;
+  border: 2px solid var(--color-void);
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(120, 140, 200, 0.35); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cell, .scan-line::before { animation: none; }
+}
