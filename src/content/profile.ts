@@ -21,30 +21,44 @@ export interface Profile {
   bio: string[];
   /** Quick-scan focus areas, mapped to the three lenses. */
   focus: { label: string; detail: string }[];
-  /** Path to the downloadable CV/resume PDF (drop the file in /public). */
+  /** Path to the downloadable CV/resume PDF (lives in /public). */
   cvHref: string;
   socials: SocialLink[];
 }
 
 export const PROFILE: Profile = {
-  name: "Romain Bodinier",
+  name: "Romain Bodinier, Ph.D",
   handle: "romain.sys",
-  role: "Builder across games, capital & biology",
+  role: "Biologist · Equity Analyst · Gaming enthusiast",
   bio: [
-    "I design game systems, allocate capital, and run small biology-meets-compute experiments — three lenses on the same instinct for complex, living systems.",
-    "This site is the feed where all of it surfaces: shipped work, theses, devlogs, and experiments, logged as one stream.",
+    "Ph.D biologist turned healthcare equity analyst, based in Geneva. By day I research biotech & medtech equities as a Senior Analyst / Junior PM at AtonRa Partners; by training I'm a cell biologist with four peer-reviewed papers on intracellular immunity.",
+    "Outside the lab and the markets I've spent a decade building the Swiss esports scene — president of Geneva E-Sport and the Swiss Esports Federation. This site is where biology, capital, and games converge into one feed.",
   ],
   focus: [
-    { label: "Game", detail: "Systems, simulation & procedural worlds" },
-    { label: "Invest", detail: "Deep-tech theses & portfolio process" },
-    { label: "Science", detail: "Synthetic biology × ML experiments" },
+    {
+      label: "Game",
+      detail:
+        "Esports leadership & game dev — built Geneva's gaming scene, 700+ members",
+    },
+    {
+      label: "Invest",
+      detail:
+        "Healthcare equity research — biotech & medtech, $60M AuM at AtonRa Partners",
+    },
+    {
+      label: "Science",
+      detail:
+        "Ph.D in biomedical sciences — immunology, bacteriology & cell biology",
+    },
   ],
-  // Drop your resume at public/cv.pdf (or change this path).
   cvHref: "/cv.pdf",
   socials: [
-    // TODO: replace with your real handles.
-    { label: "GitHub", href: "https://github.com/", icon: "github" },
-    { label: "X", href: "https://x.com/", icon: "x" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/", icon: "linkedin" },
+    { label: "GitHub", href: "https://github.com/orbite-lab/", icon: "github" },
+    { label: "X", href: "https://x.com/RBodinier", icon: "x" },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/romain-bodinier/",
+      icon: "linkedin",
+    },
   ],
 };
