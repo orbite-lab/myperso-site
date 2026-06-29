@@ -1,18 +1,10 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
-// Domain navigation lives in the home hero's channel chips (the "channels
-// acquired" control), so the top bar stays minimal and doesn't duplicate it.
-const NAV_LINKS = [
-  { href: "/", label: "Feed" },
-  { href: "/now", label: "Now" },
-];
-
+/**
+ * Minimal top bar — just the brand. Domain navigation lives in the home
+ * hero's channel chips; there's no separate feed/now page to link to.
+ */
 export function SiteNav() {
-  const pathname = usePathname();
-
   return (
     <header className="sticky top-0 z-40 border-b border-white/5 bg-[var(--color-void)]/70 backdrop-blur-xl">
       <nav className="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-3 sm:px-8">
@@ -26,29 +18,9 @@ export function SiteNav() {
           </span>
         </Link>
 
-        <ul className="flex items-center gap-1 text-sm">
-          {NAV_LINKS.map((link) => {
-            const active =
-              link.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.href);
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`relative rounded-full px-3 py-1.5 transition-colors ${
-                    active ? "text-ink" : "text-ink-dim hover:text-ink"
-                  }`}
-                >
-                  {active && (
-                    <span className="absolute inset-0 -z-10 rounded-full border border-white/15 bg-white/6" />
-                  )}
-                  {link.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <span className="mono text-[11px] uppercase tracking-[0.25em] text-ink-faint">
+          game · invest · science
+        </span>
       </nav>
     </header>
   );
