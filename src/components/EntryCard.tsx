@@ -55,10 +55,7 @@ export function EntryCard({ entry }: { entry: Entry }) {
           </time>
         </div>
 
-        <h3
-          className="glitch mt-3 text-lg font-semibold leading-snug tracking-tight text-ink transition-colors group-hover:text-white"
-          data-text={entry.title}
-        >
+        <h3 className="mt-3 text-lg font-semibold leading-snug tracking-tight text-ink transition-colors group-hover:text-white">
           {entry.title}
         </h3>
         <p className="mt-1.5 text-sm leading-relaxed text-ink-dim">

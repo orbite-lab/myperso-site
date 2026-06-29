@@ -71,22 +71,22 @@ export const DOMAINS: Record<Domain, DomainMeta> = {
     id: "game",
     label: "Game",
     tagline: "Worlds, systems, and the things that play inside them.",
-    accent: "#a855f7", // purple
-    accentSoft: "168, 85, 247",
+    accent: "#b24dff", // mCherry — fluorescent magenta-violet
+    accentSoft: "178, 77, 255",
   },
   invest: {
     id: "invest",
     label: "Invest",
     tagline: "Capital as a living system — theses, positions, post-mortems.",
-    accent: "#14b8a6", // teal
-    accentSoft: "20, 184, 166",
+    accent: "#15e0c4", // GFP — fluorescent teal
+    accentSoft: "21, 224, 196",
   },
   science: {
     id: "science",
     label: "Science",
     tagline: "Experiments at the edge of biology and computation.",
-    accent: "#3b82f6", // blue
-    accentSoft: "59, 130, 246",
+    accent: "#4f86ff", // DAPI — fluorescent blue
+    accentSoft: "79, 134, 255",
   },
 };
 

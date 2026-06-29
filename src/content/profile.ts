@@ -19,6 +19,8 @@ export interface Profile {
   role: string;
   /** Short bio paragraphs for the home CV block. */
   bio: string[];
+  /** Epigraph quote (shown in the warm "bone" accent). */
+  epigraph?: { text: string; attribution: string };
   /** Quick-scan focus areas, mapped to the three lenses. */
   focus: { label: string; detail: string }[];
   /** Path to the downloadable CV/resume PDF (lives in /public). */
@@ -34,6 +36,10 @@ export const PROFILE: Profile = {
     "Ph.D biologist turned healthcare equity analyst, based in Geneva. By day I research biotech & medtech equities as a Senior Analyst / Junior PM at AtonRa Partners; by training I'm a cell biologist with four peer-reviewed papers on intracellular immunity.",
     "Outside the lab and the markets I've spent a decade building the Swiss esports scene — president of Geneva E-Sport and the Swiss Esports Federation. This site is where biology, capital, and games converge into one feed.",
   ],
+  epigraph: {
+    text: "Our world is built on biology, and once we begin to understand it, it then becomes technology.",
+    attribution: "Ryan Bethencourt",
+  },
   focus: [
     {
       label: "Game",

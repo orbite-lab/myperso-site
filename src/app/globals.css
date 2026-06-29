@@ -8,17 +8,18 @@
 */
 
 @theme {
-  --color-void: #05060a;
-  --color-void-2: #0a0d16;
-  --color-panel: #0e1220;
-  --color-membrane: #141a2e;
-  --color-ink: #e6ecff;
-  --color-ink-dim: #8b93b5;
-  --color-ink-faint: #565d7a;
+  --color-void: #04060b;
+  --color-void-2: #070a12;
+  --color-panel: #0a0e18;
+  --color-membrane: #111726;
+  --color-ink: #e9edff;
+  --color-ink-dim: #98a1c2;
+  --color-ink-faint: #565e7c;
+  --color-bone: #e7dec9; /* the single warm neutral */
 
-  --color-game: #a855f7;
-  --color-invest: #14b8a6;
-  --color-science: #3b82f6;
+  --color-game: #b24dff; /* mCherry */
+  --color-invest: #15e0c4; /* GFP */
+  --color-science: #4f86ff; /* DAPI */
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
@@ -50,16 +51,27 @@ h1, h2, h3, .font-display {
   letter-spacing: -0.01em;
 }
 
-/* ---- Ambient backdrop: living membrane + grid + scanlines ---- */
+/* ---- Ambient backdrop: faint fluorescence bloom on specimen-black ---- */
 .bio-backdrop {
   position: fixed;
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(ellipse 80% 50% at 15% -10%, rgba(168, 85, 247, 0.18), transparent 60%),
-    radial-gradient(ellipse 70% 50% at 85% 10%, rgba(20, 184, 166, 0.14), transparent 55%),
-    radial-gradient(ellipse 90% 60% at 50% 110%, rgba(59, 130, 246, 0.16), transparent 60%),
+    radial-gradient(ellipse 70% 45% at 18% -10%, rgba(178, 77, 255, 0.12), transparent 60%),
+    radial-gradient(ellipse 60% 45% at 88% 4%, rgba(21, 224, 196, 0.09), transparent 58%),
+    radial-gradient(ellipse 80% 55% at 50% 112%, rgba(79, 134, 255, 0.11), transparent 62%),
     var(--color-void);
+}
+
+/* Single ambient layer: fine imaging grain (microscope sensor noise) */
+.imaging-grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .bio-grid {

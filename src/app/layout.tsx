@@ -35,7 +35,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${chakra.variable}`}
     >
-      <body className="bio-scanlines min-h-screen">
+      <body className="imaging-grain min-h-screen">
         <BioBackdrop />
         <SiteNav />
         <main className="mx-auto w-full max-w-5xl px-5 pb-24 pt-8 sm:px-8">

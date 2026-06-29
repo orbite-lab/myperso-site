@@ -89,36 +89,21 @@ export function EntryCover({
           />
         ))}
 
-        {/* helix ribbon */}
+        {/* helix ribbon — kept faint so the cell field reads first */}
         <polyline
           points={helix.map((h) => `${h.x},${h.y1}`).join(" ")}
           fill="none"
           stroke={accent}
-          strokeOpacity="0.5"
-          strokeWidth="1.25"
-          filter={`url(#${gid}-glow)`}
+          strokeOpacity="0.22"
+          strokeWidth="1"
         />
         <polyline
           points={helix.map((h) => `${h.x},${h.y2}`).join(" ")}
           fill="none"
           stroke={accent}
-          strokeOpacity="0.35"
-          strokeWidth="1.25"
+          strokeOpacity="0.14"
+          strokeWidth="1"
         />
-        {helix.map((h, i) =>
-          i % 2 === 0 ? (
-            <line
-              key={`r${i}`}
-              x1={h.x}
-              y1={h.y1}
-              x2={h.x}
-              y2={h.y2}
-              stroke={accent}
-              strokeOpacity="0.22"
-              strokeWidth="0.75"
-            />
-          ) : null,
-        )}
 
         {/* cells */}
         {cells.map((c, i) => (
