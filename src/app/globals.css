@@ -22,8 +22,10 @@
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-display: var(--font-chakra), var(--font-geist-sans), sans-serif;
 
   --radius-organic: 1.25rem;
+  --ease-bio: cubic-bezier(0.22, 0.7, 0.2, 1);
 }
 
 :root {
@@ -40,6 +42,12 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/* Display typeface (Chakra Petch) for headings; mono labels opt back out. */
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
 }
 
 /* ---- Ambient backdrop: living membrane + grid + scanlines ---- */
@@ -234,7 +242,45 @@ body {
 
 .animate-float { animation: float-y 9s ease-in-out infinite; }
 
+/* Animated gradient text (hero headline) */
+@keyframes gradient-pan {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    #a855f7, #14b8a6, #3b82f6, #14b8a6, #a855f7
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 7s linear infinite;
+}
+
+/* Route transition — replays on every navigation via app/template.tsx */
+@keyframes routeIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.995); filter: blur(2px); }
+  to   { opacity: 1; transform: none; filter: blur(0); }
+}
+.route-fade { animation: routeIn 0.5s var(--ease-bio) both; }
+
+/* Scroll reveal (JS toggles [data-shown]) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s var(--ease-bio), transform 0.6s var(--ease-bio);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal[data-shown="true"] { opacity: 1; transform: none; }
+
+/* Smoother default easing on interactive chrome */
+a, button { transition-timing-function: var(--ease-bio); }
+
 @media (prefers-reduced-motion: reduce) {
-  .cell, .scan-line::before, .animate-float,
-  [class*="animate-["], .glitch::after { animation: none !important; }
+  .cell, .scan-line::before, .animate-float, .text-gradient,
+  [class*="animate-["], .glitch::after, .route-fade { animation: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
 }

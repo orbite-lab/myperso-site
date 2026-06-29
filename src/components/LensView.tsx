@@ -2,6 +2,7 @@ import { byDomain } from "@/content/entries";
 import { DOMAINS, type Domain } from "@/content/entries/types";
 import { EntryCard } from "./EntryCard";
 import { BioPhoto } from "./BioPhoto";
+import { Reveal } from "./Reveal";
 
 /** Optional photo backdrop per lens (degrades to gradient if file absent). */
 const LENS_PHOTO: Partial<Record<Domain, { src: string; position?: string }>> = {
@@ -55,8 +56,10 @@ export function LensView({ domain }: { domain: Domain }) {
 
       {entries.length > 0 ? (
         <div className="grid gap-4 sm:grid-cols-2">
-          {entries.map((entry) => (
-            <EntryCard key={entry.slug} entry={entry} />
+          {entries.map((entry, i) => (
+            <Reveal key={entry.slug} index={i}>
+              <EntryCard entry={entry} />
+            </Reveal>
           ))}
         </div>
       ) : (

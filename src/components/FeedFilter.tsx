@@ -8,6 +8,7 @@ import {
   type Entry,
 } from "@/content/entries/types";
 import { EntryCard } from "./EntryCard";
+import { Reveal } from "./Reveal";
 
 type Filter = Domain | "all";
 
@@ -57,8 +58,10 @@ export function FeedFilter({ entries }: { entries: Entry[] }) {
 
       {/* Feed grid */}
       <div className="grid gap-4 sm:grid-cols-2">
-        {visible.map((entry) => (
-          <EntryCard key={entry.slug} entry={entry} />
+        {visible.map((entry, i) => (
+          <Reveal key={entry.slug} index={i}>
+            <EntryCard entry={entry} />
+          </Reveal>
         ))}
       </div>
     </section>

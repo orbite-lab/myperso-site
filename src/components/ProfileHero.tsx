@@ -56,9 +56,7 @@ export function ProfileHero() {
             {PROFILE.name}
           </h1>
           <p className="mt-2 text-base font-medium sm:text-lg">
-            <span className="bg-gradient-to-r from-game via-invest to-science bg-clip-text text-transparent">
-              {PROFILE.role}
-            </span>
+            <span className="text-gradient">{PROFILE.role}</span>
           </p>
 
           <div className="mt-4 max-w-2xl space-y-2 text-sm leading-relaxed text-ink-dim sm:text-base">

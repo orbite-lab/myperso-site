@@ -6,9 +6,7 @@ export default function NotFound() {
       <p className="mono text-xs uppercase tracking-[0.3em] text-ink-faint">
         // signal lost
       </p>
-      <h1 className="mt-4 bg-gradient-to-r from-game via-invest to-science bg-clip-text text-7xl font-bold text-transparent">
-        404
-      </h1>
+      <h1 className="text-gradient mt-4 text-7xl font-bold">404</h1>
       <p className="mt-4 max-w-sm text-ink-dim">
         This organism has no such cell. The entry may have been pruned or never
         grew here.
