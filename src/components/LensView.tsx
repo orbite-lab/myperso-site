@@ -1,8 +1,7 @@
 import { byDomain } from "@/content/entries";
 import { DOMAINS, type Domain } from "@/content/entries/types";
-import { EntryCard } from "./EntryCard";
 import { BioPhoto } from "./BioPhoto";
-import { Reveal } from "./Reveal";
+import { KymographFeed } from "./KymographFeed";
 
 /** Optional photo backdrop per lens (degrades to gradient if file absent). */
 const LENS_PHOTO: Partial<Record<Domain, { src: string; position?: string }>> = {
@@ -54,17 +53,7 @@ export function LensView({ domain }: { domain: Domain }) {
         </div>
       </header>
 
-      {entries.length > 0 ? (
-        <div className="grid gap-4 sm:grid-cols-2">
-          {entries.map((entry, i) => (
-            <Reveal key={entry.slug} index={i}>
-              <EntryCard entry={entry} />
-            </Reveal>
-          ))}
-        </div>
-      ) : (
-        <p className="mono text-sm text-ink-faint">// no signals yet</p>
-      )}
+      <KymographFeed entries={entries} />
     </div>
   );
 }

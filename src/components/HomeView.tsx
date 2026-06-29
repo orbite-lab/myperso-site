@@ -4,8 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { DOMAINS, type Entry } from "@/content/entries/types";
 import { ConfocalHero, type Channel } from "./ConfocalHero";
-import { EntryCard } from "./EntryCard";
-import { Reveal } from "./Reveal";
+import { KymographFeed } from "./KymographFeed";
 
 /**
  * Home composition. Owns the active fluorescence channel so the hero's
@@ -56,13 +55,7 @@ export function HomeView({ entries }: { entries: Entry[] }) {
           </span>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          {visible.map((entry, i) => (
-            <Reveal key={entry.slug} index={i}>
-              <EntryCard entry={entry} />
-            </Reveal>
-          ))}
-        </div>
+        <KymographFeed entries={visible} />
       </section>
     </div>
   );
