@@ -3,7 +3,7 @@ import { SocialIcon } from "./SocialIcon";
 
 export function SocialLinks({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
+    <div className={`flex items-center gap-3 ${className}`}>
       {PROFILE.socials.map((s) => (
         <a
           key={s.label}
@@ -12,32 +12,27 @@ export function SocialLinks({ className = "" }: { className?: string }) {
           rel="noopener noreferrer"
           aria-label={s.label}
           title={s.label}
-          className="group flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-ink-dim transition-all hover:-translate-y-0.5 hover:border-white/25 hover:text-ink"
+          className="text-ink-faint transition-colors hover:text-ink"
         >
-          <SocialIcon name={s.icon} className="h-4 w-4" />
+          <SocialIcon name={s.icon} className="h-[18px] w-[18px]" />
         </a>
       ))}
     </div>
   );
 }
 
+/** Bracketed mono action — reads like an instrument command, not a pill. */
 export function DownloadCV({ className = "" }: { className?: string }) {
   return (
     <a
       href={PROFILE.cvHref}
       target="_blank"
       rel="noopener noreferrer"
-      className={`mono group inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all hover:-translate-y-0.5 ${className}`}
-      style={{
-        borderColor: "rgba(230,236,255,0.25)",
-        background:
-          "linear-gradient(90deg, rgba(168,85,247,0.15), rgba(20,184,166,0.15), rgba(59,130,246,0.15))",
-        color: "#e6ecff",
-      }}
+      className={`mono group inline-flex items-center gap-2 border-b border-white/25 pb-0.5 text-xs uppercase tracking-[0.2em] text-ink transition-colors hover:border-bone hover:text-bone ${className}`}
     >
       <svg
         viewBox="0 0 24 24"
-        className="h-4 w-4"
+        className="h-3.5 w-3.5"
         fill="none"
         stroke="currentColor"
         strokeWidth="2"
@@ -47,7 +42,7 @@ export function DownloadCV({ className = "" }: { className?: string }) {
       >
         <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" />
       </svg>
-      Download CV
+      download cv
     </a>
   );
 }

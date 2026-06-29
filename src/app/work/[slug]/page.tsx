@@ -45,26 +45,29 @@ export default async function WorkDetailPage({
         ← back to feed
       </Link>
 
-      {/* Header */}
-      <header className="hud-frame relative overflow-hidden rounded-[var(--radius-organic)] glass">
-        {/* cover banner */}
-        <div className="relative">
+      {/* Header — open, sharp-framed cover (corner ticks), no glass box */}
+      <header>
+        <div className="relative overflow-hidden">
           {entry.image ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={entry.image} alt="" className="h-44 w-full object-cover sm:h-56" />
           ) : (
             <EntryCover slug={entry.slug} domain={entry.domain} height={210} />
           )}
-          <span className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0e1220] to-transparent" />
+          <span className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-void to-transparent" />
+          {[
+            "left-0 top-0 border-l border-t",
+            "right-0 top-0 border-r border-t",
+            "left-0 bottom-0 border-l border-b",
+            "right-0 bottom-0 border-r border-b",
+          ].map((c, i) => (
+            <span key={i} className={`absolute ${c} h-4 w-4 border-white/35`} aria-hidden />
+          ))}
         </div>
 
-        <div className="relative p-8 pt-4">
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="mt-5 flex flex-wrap items-center gap-3">
           <DomainBadge domain={entry.domain} type={entry.type} />
-          <time
-            className="mono text-xs text-ink-faint"
-            dateTime={entry.date}
-          >
+          <time className="mono text-xs text-ink-faint" dateTime={entry.date}>
             {stampDate(entry.date)} · {formatDate(entry.date)}
           </time>
           {entry.state && (
@@ -77,13 +80,13 @@ export default async function WorkDetailPage({
           )}
         </div>
 
-        <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+        <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-[2.6rem]">
           {entry.title}
         </h1>
-        <p className="mt-3 max-w-2xl text-lg leading-relaxed text-ink-dim">
+        <p className="mt-3 max-w-2xl border-l-2 pl-4 text-lg leading-relaxed text-ink-dim"
+          style={{ borderColor: `${meta.accent}66` }}>
           {entry.summary}
         </p>
-        </div>
       </header>
 
       {/* Body */}
@@ -95,19 +98,15 @@ export default async function WorkDetailPage({
         </div>
       )}
 
-      {/* Links */}
+      {/* Links — bracketed mono actions, not pills */}
       {entry.links && entry.links.length > 0 && (
-        <div className="flex flex-wrap gap-2.5">
+        <div className="flex flex-wrap gap-x-6 gap-y-3">
           {entry.links.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="mono rounded-full border px-4 py-2 text-sm transition-all hover:-translate-y-0.5"
-              style={{
-                borderColor: `${meta.accent}40`,
-                color: meta.accent,
-                background: `${meta.accent}10`,
-              }}
+              className="mono inline-flex items-center gap-1.5 border-b pb-0.5 text-sm transition-colors"
+              style={{ color: meta.accent, borderColor: `${meta.accent}55` }}
             >
               {link.label} ↗
             </a>
@@ -117,12 +116,9 @@ export default async function WorkDetailPage({
 
       {/* Tags */}
       {entry.tags && entry.tags.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 border-t border-white/5 pt-6">
+        <div className="flex flex-wrap gap-x-4 gap-y-1.5 border-t border-white/10 pt-6">
           {entry.tags.map((tag) => (
-            <span
-              key={tag}
-              className="mono rounded-md bg-white/5 px-2 py-0.5 text-[11px] text-ink-faint"
-            >
+            <span key={tag} className="mono text-[11px] text-ink-faint">
               #{tag}
             </span>
           ))}

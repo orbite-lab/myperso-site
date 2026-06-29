@@ -61,16 +61,17 @@ export function KymographFeed({ entries }: { entries: Entry[] }) {
 
       {groups.map((g) => (
         <section key={g.key}>
-          {/* period marker */}
+          {/* period marker — label + hairline running to the edge */}
           <div className="relative flex items-center py-3 pl-10">
             <span
               className="absolute left-4 h-2 w-2 -translate-x-1/2 rounded-full bg-ink-faint"
               aria-hidden
             />
-            <h2 className="mono text-[11px] uppercase tracking-[0.3em] text-ink-dim">
+            <h2 className="mono shrink-0 text-[11px] uppercase tracking-[0.3em] text-ink-dim">
               {monthName(g.year, g.month)}{" "}
               <span className="text-ink-faint">{g.year}</span>
             </h2>
+            <span className="ml-4 h-px flex-1 bg-white/8" aria-hidden />
           </div>
 
           <ul>
@@ -121,15 +122,23 @@ function TimelineEntry({ entry }: { entry: Entry }) {
         aria-hidden
       />
 
-      <div className="flex gap-4 rounded-2xl border border-transparent p-3 transition-all duration-300 group-hover:border-white/8 group-hover:bg-white/[0.025]">
-        {/* compact bio-scan thumb */}
-        <div className="hidden h-20 w-24 shrink-0 overflow-hidden rounded-lg sm:block">
+      <div className="flex gap-4 border-b border-white/[0.06] pb-4 transition-colors group-hover:border-white/15">
+        {/* compact bio-scan thumb — sharp FOV with corner ticks */}
+        <div className="relative hidden h-20 w-24 shrink-0 overflow-hidden sm:block">
           {entry.image ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={entry.image} alt="" className="h-full w-full object-cover" />
           ) : (
             <EntryCover slug={entry.slug} domain={entry.domain} height={80} />
           )}
+          {[
+            "left-0 top-0 border-l border-t",
+            "right-0 top-0 border-r border-t",
+            "left-0 bottom-0 border-l border-b",
+            "right-0 bottom-0 border-r border-b",
+          ].map((c, k) => (
+            <span key={k} className={`absolute ${c} h-2.5 w-2.5 border-white/30`} aria-hidden />
+          ))}
         </div>
 
         <div className="min-w-0 flex-1">

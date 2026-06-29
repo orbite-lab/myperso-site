@@ -9,6 +9,13 @@ const LENS_PHOTO: Partial<Record<Domain, { src: string; position?: string }>> = 
   invest: { src: "/hero.jpg", position: "center 20%" },
 };
 
+/** Fluorophore label per channel (matches the hero's vernacular). */
+const FLUOR: Record<Domain, string> = {
+  game: "mCherry",
+  invest: "GFP",
+  science: "DAPI",
+};
+
 /** Full lens page body for a single domain. */
 export function LensView({ domain }: { domain: Domain }) {
   const meta = DOMAINS[domain];
@@ -17,38 +24,34 @@ export function LensView({ domain }: { domain: Domain }) {
 
   return (
     <div className="space-y-8">
-      <header className="hud-frame relative overflow-hidden rounded-[var(--radius-organic)] glass p-8">
+      <header className="relative overflow-hidden border-b border-white/10 pb-7">
         {photo && (
           <BioPhoto
             src={photo.src}
             accent={meta.accent}
             position={photo.position}
-            className="absolute inset-0 opacity-30"
+            className="absolute -inset-x-5 -top-8 bottom-0 opacity-25 sm:-inset-x-8"
             style={{
-              maskImage: "linear-gradient(to left, black, transparent 70%)",
+              maskImage:
+                "linear-gradient(to left, black, transparent 65%)",
             }}
           />
         )}
-        <span
-          className="absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-40 blur-3xl"
-          style={{ background: meta.accent }}
-          aria-hidden
-        />
-        <div className="relative">
+        <div className="relative pt-1">
           <p
             className="mono text-xs uppercase tracking-[0.3em]"
             style={{ color: meta.accent }}
           >
-            // lens · {meta.label.toLowerCase()}
+            // lens · {meta.label.toLowerCase()} · {FLUOR[domain]}
           </p>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight">
+          <h1 className="mt-3 text-5xl font-bold tracking-tight">
             {meta.label}
           </h1>
           <p className="mt-3 max-w-xl text-base leading-relaxed text-ink-dim">
             {meta.tagline}
           </p>
           <p className="mono mt-5 text-xs text-ink-faint">
-            {entries.length} entr{entries.length === 1 ? "y" : "ies"} in this lens
+            {entries.length} entr{entries.length === 1 ? "y" : "ies"} on this channel
           </p>
         </div>
       </header>
