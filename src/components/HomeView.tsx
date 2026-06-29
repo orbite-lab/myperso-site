@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { DOMAINS, type Entry } from "@/content/entries/types";
 import { ConfocalHero, type Channel } from "./ConfocalHero";
 import { EntryCard } from "./EntryCard";
@@ -33,9 +34,13 @@ export function HomeView({ entries }: { entries: Entry[] }) {
             {active === "merge" ? (
               <span className="text-ink-dim">all channels</span>
             ) : (
-              <span style={{ color: DOMAINS[active].accent }}>
-                {DOMAINS[active].label} isolated
-              </span>
+              <Link
+                href={`/${active}`}
+                className="underline-offset-4 transition-opacity hover:underline"
+                style={{ color: DOMAINS[active].accent }}
+              >
+                {DOMAINS[active].label} isolated → open lens
+              </Link>
             )}
           </p>
           <span className="mono text-[11px] text-ink-faint">

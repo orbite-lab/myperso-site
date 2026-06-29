@@ -2,18 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { DOMAIN_ORDER, DOMAINS } from "@/content/entries/types";
 
+// Domain navigation lives in the home hero's channel chips (the "channels
+// acquired" control), so the top bar stays minimal and doesn't duplicate it.
 const NAV_LINKS = [
   { href: "/", label: "Feed" },
-  ...DOMAIN_ORDER.map((d) => ({ href: `/${d}`, label: DOMAINS[d].label })),
   { href: "/now", label: "Now" },
 ];
-
-function accentFor(href: string): string | undefined {
-  const d = DOMAIN_ORDER.find((x) => href === `/${x}`);
-  return d ? DOMAINS[d].accent : undefined;
-}
 
 export function SiteNav() {
   const pathname = usePathname();
@@ -37,34 +32,16 @@ export function SiteNav() {
               link.href === "/"
                 ? pathname === "/"
                 : pathname.startsWith(link.href);
-            const accent = accentFor(link.href);
             return (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   className={`relative rounded-full px-3 py-1.5 transition-colors ${
-                    active
-                      ? "text-ink"
-                      : "text-ink-dim hover:text-ink"
+                    active ? "text-ink" : "text-ink-dim hover:text-ink"
                   }`}
-                  style={
-                    active && accent
-                      ? { color: accent }
-                      : undefined
-                  }
                 >
                   {active && (
-                    <span
-                      className="absolute inset-0 -z-10 rounded-full border"
-                      style={{
-                        borderColor: accent
-                          ? `${accent}55`
-                          : "rgba(255,255,255,0.15)",
-                        background: accent
-                          ? `${accent}14`
-                          : "rgba(255,255,255,0.06)",
-                      }}
-                    />
+                    <span className="absolute inset-0 -z-10 rounded-full border border-white/15 bg-white/6" />
                   )}
                   {link.label}
                 </Link>
