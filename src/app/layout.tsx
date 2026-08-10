@@ -22,9 +22,9 @@ const chakra = Chakra_Petch({
 });
 
 export const metadata: Metadata = {
-  title: "myperso // game · invest · science",
+  title: "orbite.lab // Romain Bodinier · game · invest · science",
   description:
-    "A living feed at the intersection of games, capital, and biology.",
+    "Romain Bodinier — a living feed at the intersection of games, capital, and biology.",
 };
 
 export default function RootLayout({

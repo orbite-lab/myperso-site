@@ -14,7 +14,7 @@ export function SiteNav() {
             <span className="relative h-3 w-3 rounded-full bg-gradient-to-tr from-game via-invest to-science" />
           </span>
           <span className="mono text-sm font-medium tracking-tight">
-            myperso<span className="text-ink-faint">.sys</span>
+            orbite<span className="text-ink-faint">.lab</span>
           </span>
         </Link>
 

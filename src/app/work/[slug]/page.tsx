@@ -18,8 +18,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const entry = getEntry(slug);
-  if (!entry) return { title: "Not found // myperso" };
-  return { title: `${entry.title} // myperso`, description: entry.summary };
+  if (!entry) return { title: "Not found // orbite.lab" };
+  return { title: `${entry.title} // orbite.lab`, description: entry.summary };
 }
 
 export default async function WorkDetailPage({
