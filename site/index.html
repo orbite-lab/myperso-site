@@ -2,13 +2,21 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="preconnect" href="https://esm.sh" crossorigin>
+  <link rel="modulepreload" href="https://esm.sh/three@0.160.0">
+  <link rel="modulepreload" href="https://esm.sh/three@0.160.0/es2022/three.mjs">
+  <link rel="modulepreload" href="https://esm.sh/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js">
+  <link rel="modulepreload" href="https://esm.sh/three@0.160.0/examples/jsm/postprocessing/RenderPass.js">
+  <link rel="modulepreload" href="https://esm.sh/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js">
   <title>Romain Bodinier, Ph.D — Biologist · Equity Analyst · Gamer</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #faf9f5; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
-    #__bundler_loading { position: fixed; bottom: 20px; right: 20px; font: 13px/1.4 -apple-system, BlinkMacSystemFont, sans-serif; color: #666; background: #fff; padding: 8px 14px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.12); z-index: 10000; }
-    #__bundler_thumbnail { position: fixed; inset: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #faf9f5; z-index: 9999; }
-    #__bundler_thumbnail svg { width: 100%; height: 100%; object-fit: contain; }
+    body { background: #161826; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+    #__bundler_loading { position: fixed; left: 0; right: 0; bottom: 28px; text-align: center; font: 11px/1.4 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 0.08em; color: rgba(233,233,237,0.4); z-index: 10000; }
+    #__bundler_thumbnail { position: fixed; inset: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #161826; z-index: 9999; }
+    #__bundler_thumbnail svg { width: 112px; height: 112px; animation: rbPulse 1.6s ease-in-out infinite; }
+    @keyframes rbPulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { #__bundler_thumbnail svg { animation: none; } }
     #__bundler_placeholder { color: #999; font-size: 14px; }
   </style>
   <noscript>
@@ -142,7 +150,7 @@
       }, 100);
     })();
   </script>
-  <div id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" sc-camel-view-box="0 0 100 100"><rect width="100" height="100" fill="#161826"></rect><circle cx="50" cy="50" r="26" fill="#2b2741"></circle><text x="50" y="59" text-anchor="middle" font-family="Instrument Serif, serif" font-size="26" fill="#b5abfc">RB</text></svg></div>
+  <div id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#161826"></rect><circle cx="50" cy="50" r="26" fill="#2b2741"></circle><text x="50" y="59" text-anchor="middle" font-family="Instrument Serif, serif" font-size="26" fill="#b5abfc">RB</text></svg></div>
   <div id="__bundler_loading">Unpacking...</div>
 
   <script>
